@@ -4,7 +4,7 @@
       <div class="relative z-10 text-center text-blanc">
         <h1 class="text-5xl md:text-6xl font-bold mb-4 ">Laurine Bourgeois</h1>
         <h2 class="text-lg md:text-xl mb-8 ">Ostéopathe Animalier</h2>
-        <a href="/priseRdv" class="bg-blue-500 hover:bg-blue-700 text-blanc font-bold py-2 px-4 rounded">
+        <a href="/priseRdv" class="bg-bleu hover:bg-bleu_hover text-blanc font-bold py-2 px-4 rounded">
             Prendre rendez-vous
         </a>
       </div>

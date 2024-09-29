@@ -2,7 +2,7 @@
 
 
         <div
-            class="w-full bg-vert h-[50vh] md:max-h-[400px] text-center mx-auto  relative  flex flex-row justify-center sm:p-3">
+            class="w-full bg-vert h-[50vh] md:max-h-[450px] text-center mx-auto  relative  flex flex-row justify-center sm:p-3">
             <div class="w-[15%] h-full flex  justify-center items-center  ">
                 <button @click="prevTemoignage" class="md:size-14 size-10 text-bleu hover:text-bleu_hover transition-all  border-none cursor-pointer rounded ">
                     <ArrowLeftCircleIcon class="w-full h-ful" />
@@ -15,7 +15,7 @@
                     <transition :name="transitionName" mode="out-in">
                         <div :key="currentIndex" class="text-center h-full  w-full">
                             <p class="text-l overflow-hidden md:text-xl  md:px-20 pb-5 mt-10 md:mt-16">{{ currentTemoignage.text }}</p>
-                            <p class="author italic text-gray-600 mt-2 text-l md:text-xl ">- {{
+                            <p class="author italic text-gray-600 mt-2  text-l md:text-xl ">- {{
                                 currentTemoignage.author }}
                             </p>
                         </div>
