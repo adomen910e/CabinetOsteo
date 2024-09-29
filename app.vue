@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="pt-14 bg-gray-200"> <!-- Ajustez la valeur selon la hauteur de votre header -->
+    <div class="pt-14 bg-blanc"> <!-- Ajustez la valeur selon la hauteur de votre header -->
       <NuxtPage />
     </div>
     <Footer />

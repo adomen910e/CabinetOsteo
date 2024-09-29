@@ -10,6 +10,14 @@ export default {
   ],
   theme: {
     extend: {},
+    colors:{
+      blanc : '#FAF9F6',
+      noir : '#2B2B2A',
+      bleu: '#273B65',
+      bleu_hover: '#4568B2',
+      vert: '#A8D5BA',
+      vert_hover: '#94BBA4',
+    }
   },
   plugins: [],
 }

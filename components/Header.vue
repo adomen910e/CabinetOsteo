@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-gray-800 text-white p-4 fixed top-0 left-0 w-full z-50">
+  <header class="bg-bleu text-blanc p-4 fixed top-0 left-0 w-full z-50">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-xl font-bold">Laurine Bourgeois</h1>
       <nav class="hidden md:flex md:items-center md:justify-end space-x-4">
