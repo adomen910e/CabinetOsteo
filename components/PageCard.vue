@@ -2,7 +2,7 @@
     <div class="flex flex-wrap justify-center">
         <NuxtLink
             :to="`/priseRdv?title=${title}`"
-            class="max-w-xs mx-2 my-4 bg-white shadow-lg rounded-lg overflow-hidden box-border transition duration-200 border border-gray-300"
+            class="max-w-xs mx-2 my-4 bg-blanc shadow-lg rounded-lg overflow-hidden box-border transition duration-200 border border-gray-300"
             exact-active-class="active-link"
         >
             <div class="m-2 sm:m-4">
