@@ -30,7 +30,7 @@
   }
   </style> -->
 <template>
-    <div class="mt-40 md:mt-20 h-screen bg-blanc">
+    <div class="mt-40 md:mt-20  bg-blanc">
         <div class="flex flex-col py-6 h-full md:px-6 px-0">
             <h1 class="text-2xl md:text-6xl font-bold mb-8 text-center text-bleu">Prenez rendez-vous</h1>
             <PricingToggle @toggle="handleToggle" />

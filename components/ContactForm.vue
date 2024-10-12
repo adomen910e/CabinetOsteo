@@ -32,7 +32,7 @@
             <option value="Autre">Autre</option>
           </select>
         </div>
-        <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200 col-span-1 md:col-span-2">Envoyer</button>
+        <button type="submit" class="w-full bg-bleu text-white font-semibold py-2 rounded-md hover:bg-bleu_hover transition duration-200 col-span-1 md:col-span-2">Envoyer</button>
       </form>
       <div v-if="successMessage" class="mt-4 text-green-600">{{ successMessage }}</div>
       <div v-if="errorMessage" class="mt-4 text-red-600">{{ errorMessage }}</div>

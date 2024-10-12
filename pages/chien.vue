@@ -1,6 +1,6 @@
 <template>
     <div class="m-20">
-        <h1 class="text-2xl md:text-6xl font-bold mb-8 text-center text-blue-600">Le chien</h1>
+        <h1 class="text-2xl md:text-6xl font-bold mb-8 text-center text-bleu_hover">Le chien</h1>
 
         <h1 class="text-2xl md:text-6xl font-bold mb-8 text-center">Motifs de consultation</h1>
         <p class="text-xs md:text-xl text-pretty  mb-20 text-center">Pour les canidés, les motifs de consultations sont
@@ -20,7 +20,7 @@
                     </ul>
                     <p class="text-sm md:text-lg mb-6">De 2 mois à 1,5 ans : une séance tous les 4 mois.</p>
                     <a :href="buttonLink"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition duration-300 ">
+                        class="bg-bleu hover:bg-bleu_hover text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition duration-300 ">
                         Prendre rendez-vous
                     </a>
                 </div>
@@ -45,7 +45,7 @@
                     </ul>
                     <p class="text-sm md:text-lg mb-6">De 2 mois à 1,5 ans : une séance tous les 4 mois.</p>
                     <a :href="buttonLink"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition duration-300 ">
+                        class="bg-bleu hover:bg-bleu_hover text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition duration-300 ">
                         Prendre rendez-vous
                     </a>
                 </div>
@@ -67,7 +67,7 @@
                         selon les besoins de votre chien.
                     </p>
                     <a :href="buttonLink"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition duration-300 ">
+                        class="bg-bleu hover:bg-bleu_hover text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition duration-300 ">
                         Prendre rendez-vous
                     </a>
                 </div>

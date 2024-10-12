@@ -14,7 +14,7 @@
                 <p class="mt-1 sm:mt-2 text-gray-600 text-sm sm:text-base">{{ description }}</p>
                 <div class="mt-2 sm:mt-4">
                     <button
-                        class="w-full bg-blue-500 text-white font-semibold py-1 sm:py-2 rounded hover:bg-blue-600 transition duration-200">
+                        class="w-full bg-bleu text-white font-semibold py-1 sm:py-2 rounded hover:bg-bleu transition duration-200">
                         {{ buttonText }}
                     </button>
                 </div>

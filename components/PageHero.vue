@@ -4,7 +4,7 @@
       <h1 class="text-2xl md:text-6xl font-bold mb-4">{{ title }}</h1>
       <p class="text-xs md:text-lg mb-4">{{ description }}</p>
       <NuxtLink to="/priseRdv"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition duration-300"
+        class="bg-bleu hover:bg-bleu_hover text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition duration-300"
       >
         {{ buttonText }}
       </NuxtLink>

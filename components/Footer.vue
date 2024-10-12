@@ -1,17 +1,22 @@
 <template>
     <footer class="bg-gray-800 text-white py-6">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-            <!-- Première portion : Logo -->
-            <div class="flex items-center mb-4 md:mb-0">
-                <img src="/assets/images/elephant.jpeg" alt="Logo" class="h-20 md:h-80 mr-4" />
+            <div class="flex flex-row items-center mb-4 md:mb-0">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <img src="/assets/images/elephant.jpeg" alt="Logo" class="h-20 md:h-40 mr-4" />
+                </div>
+
+                <div class="flex flex-col text-center md:text-left mb-4 md:mb-0">
+                    <div class="m-2">
+                        <p class="font-bold text-lg">Laurine Bourgeois</p>
+                        <p>Ostéopathe Animalier</p>
+                    </div>
+
+                </div>
             </div>
 
-            <!-- Deuxième portion : Informations -->
-            <div class="flex flex-col text-center md:text-left mb-4 md:mb-0">
-                <div class="m-2">
-                    <p class="font-bold text-lg">Laurine Bourgeois</p>
-                    <p>Ostéopathe Animalier</p>
-                </div>
+
+            <div class="flex flex-col items-center mb-4 md:mb-0">
                 <div class="m-2">
                     <p>laubourgeois.osteo@gmail.com</p>
                     <span>+33 6 ?? ?? ?? ??</span>
@@ -28,16 +33,6 @@
                 </div>
             </div>
 
-            <!-- Troisième portion : Vide -->
-            <div class="flex-grow"></div>
-
-            <!-- Quatrième portion : Texte -->
-            <div class="flex items-center mb-4 md:mb-0">
-                <span>Je sais pas</span>
-            </div>
-
-            <!-- Cinquième portion : Vide -->
-            <div class="flex-grow"></div>
         </div>
     </footer>
 </template>
