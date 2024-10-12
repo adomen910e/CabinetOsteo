@@ -2,7 +2,7 @@
 
 
         <div
-            class="w-full bg-vert h-[50vh] md:max-h-[450px] text-center mx-auto  relative  flex flex-row justify-center sm:p-3">
+            class="w-full bg-vert h-[50vh] md:max-h-[450px] text-center mx-auto  relative  flex flex-row justify-center sm:p-3 py-10">
             <div class="w-[15%] h-full flex  justify-center items-center  ">
                 <button @click="prevTemoignage" class="md:size-14 size-10 text-bleu hover:text-bleu_hover transition-all  border-none cursor-pointer rounded ">
                     <ArrowLeftCircleIcon class="w-full h-ful" />
@@ -26,7 +26,7 @@
             </div>
             <div class="w-[15%] h-full flex  justify-center items-center  ">
                 <button @click="nextTemoignage" class="md:size-14 size-10 text-bleu hover:text-bleu_hover transition-all border-none cursor-pointer rounded ">
-                    <ArrowRightCircleIcon class="w-full h-full text-blue-500" />
+                    <ArrowRightCircleIcon class="w-full h-full" />
                 </button>
             </div>
         </div>

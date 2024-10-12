@@ -5,7 +5,7 @@
         <div class="w-48 h-10 bg-gray-300 rounded-full shadow-inner transition duration-300" :class="{ 'bg-blue-500': isCabinet }"></div>
         <span class="absolute left-2 text-black font-semibold transition duration-300 z-10">A domicile</span>
         <span class="absolute right-2 text-black font-semibold transition duration-300 z-10">En cabinet</span>
-        <div class="absolute w-24 h-10 bg-green-500 rounded-full shadow transition duration-300 transform" :class="{ 'translate-x-24': isCabinet }"></div>
+        <div class="absolute w-24 h-10 bg-green-400 rounded-full shadow transition duration-300 transform" :class="{ 'translate-x-24': isCabinet }"></div>
       </label>
     </div>
   </template>

@@ -30,28 +30,21 @@
   }
   </style> -->
 <template>
-    <div class="mt-40 md:mt-20">
-        <PricingToggle @toggle="handleToggle" />
-        <div class="flex justify-center p-6">
-            <table class="border border-black w-full md:w-2/3">
-                <tr>
-                    <td class="border border-black w-full md:w-1/2">
-                        <div class="form-container flex-1 border rounded-lg"
-                            :class="{ 'opacity-30 pointer-events-none': !isDomicile }">
-                            <ContactForm />
+    <div class="mt-40 md:mt-20 h-screen bg-blanc">
+        <div class="flex flex-col py-6 h-full md:px-6 px-0">
+            <h1 class="text-2xl md:text-6xl font-bold mb-8 text-center text-bleu">Prenez rendez-vous</h1>
+            <PricingToggle @toggle="handleToggle" />
+            <div class="form-container flex-1 pt-2  rounded-lg h-[]" :class="{ 'hidden': !isDomicile }">
+                <ContactForm />
 
-                        </div>
-                    </td>
-                    <td class="border border-black w-full md:w-1/2">
-                        <div class="form-container flex-1 border rounded-lg"
-                            :class="{ 'opacity-30 pointer-events-none': isDomicile }">
-                            <iframe src="https://calendly.com/laubourgeois-osteo/60min" width="100%" height="865"
-                                frameborder="0" scrolling="no" style="overflow: hidden;"></iframe>
+            </div>
 
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <div class="form-container flex-1  rounded-lg h-full" :class="{ 'hidden': isDomicile }">
+                <iframe src="https://calendly.com/laubourgeois-osteo/60min" width="100%" height="865" frameborder="0"
+                    scrolling="no" style="overflow: hidden;"></iframe>
+
+            </div>
+
         </div>
     </div>
 </template>
@@ -85,7 +78,7 @@ export default {
             title: query.title || 'Titre par défaut', // Récupérez le titre de la requête
         };
     },
-     
+
     methods: {
         handleToggle(isCabinet) {
             this.isDomicile = isCabinet ? false : true;
@@ -119,22 +112,7 @@ export default {
         /* Prend toute la largeur sur mobile */
     }
 
-    table {
-        display: block;
-        /* Affiche le tableau comme un bloc sur mobile */
-    }
-
-    tr {
-        display: flex;
-        /* Utilise flexbox pour aligner les colonnes */
-        flex-direction: column;
-        /* Colonne unique sur mobile */
-    }
-
-    td {
-        width: 100%;
-        /* Chaque cellule prend toute la largeur */
-    }
+    
 }
 </style>
 
