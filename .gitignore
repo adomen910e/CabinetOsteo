@@ -89,7 +89,11 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
+.output
 dist
+
+# Doc de déploiement privé (identifiants OVH) — ne JAMAIS committer
+DEPLOIEMENT-OVH.md
 
 # Gatsby files
 .cache/
