@@ -1,188 +1,141 @@
-<!-- <template>
-    <div class="prise-rdv">
-      <h1>Prendre un Rendez-vous</h1>
-      <iframe
-        src="https://calendly.com/laubourgeois-osteo/60min"
-        width="100%"
-        height="800"
-        frameborder="0"
-        scrolling="no"
-      ></iframe>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'PriseRDV',
-  };
-  </script>
-  
-  <style scoped>
-  .prise-rdv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  h1 {
-    margin-bottom: 20px;
-  }
-  </style> -->
 <template>
-    <div class="mt-40 md:mt-20  bg-blanc">
-        <div class="flex flex-col py-6 h-full md:px-6 px-0">
-            <h1 class="text-2xl md:text-6xl font-bold mb-8 text-center text-bleu">Prenez rendez-vous</h1>
-            <PricingToggle @toggle="handleToggle" />
-            <div class="form-container flex-1 pt-2  rounded-lg h-[]" :class="{ 'hidden': !isDomicile }">
-                <ContactForm />
+    <div class="min-h-screen bg-gradient-to-b from-blue-50/50 to-white">
+        <!-- Hero Section -->
+        <div class="relative py-16 overflow-hidden">
+            <div class="container mx-auto px-4 text-center">
+                <div class="relative inline-block animate-fade-in-up">
+                    <h1 class="text-4xl md:text-6xl font-bold text-[#47855A] mb-8">
+                        Prendre Rendez-vous
+                        <div class="absolute -z-10 inset-0 bg-gradient-to-r from-blue-200/30 to-blue-100/30 blur-3xl transform -skew-y-3"></div>
+                    </h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+                        Choisissez le type de consultation qui vous convient le mieux
+                    </p>
+                </div>
 
+                <!-- Toggle amélioré -->
+                <div class="max-w-2xl mx-auto mb-12 animate-fade-in">
+                    <div class="bg-white p-2 rounded-xl shadow-lg">
+                        <div class="relative">
+                            <div class="flex">
+                                <button 
+                                    @click="setDomicile"
+                                    class="flex-1 px-6 py-3 text-lg font-medium rounded-lg transition-colors relative z-10"
+                                    :class="isDomicile ? 'text-white' : 'text-gray-600'"
+                                >
+                                    À domicile
+                                </button>
+                                <button 
+                                    @click="setCabinet"
+                                    class="flex-1 px-6 py-3 text-lg font-medium rounded-lg transition-colors relative z-10"
+                                    :class="!isDomicile ? 'text-white' : 'text-gray-600'"
+                                >
+                                    En cabinet
+                                </button>
+                            </div>
+                            <!-- Sliding background -->
+                            <div 
+                                class="absolute inset-y-0 w-1/2 bg-[#47855A] rounded-lg transition-transform duration-300"
+                                :class="isDomicile ? 'left-0' : 'translate-x-full'"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="form-container flex-1  rounded-lg h-full" :class="{ 'hidden': isDomicile }">
-                <iframe src="https://calendly.com/laubourgeois-osteo/60min" width="100%" height="865" frameborder="0"
-                    scrolling="no" style="overflow: hidden;"></iframe>
+        <!-- Contenu dynamique -->
+        <div class="container mx-auto px-4 pb-16">
+            <div class="max-w-4xl mx-auto">
+                <!-- Formulaire à domicile -->
+                <div 
+                    v-show="isDomicile"
+                    class="bg-white rounded-2xl shadow-xl p-8 animate-fade-in"
+                >
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Consultation à domicile</h2>
+                        <p class="text-gray-600">Remplissez le formulaire ci-dessous pour une consultation à votre domicile</p>
+                    </div>
+                    <ContactForm />
+                </div>
 
+                <!-- Calendly pour cabinet -->
+                <div 
+                    v-show="!isDomicile"
+                    class="bg-white rounded-2xl shadow-xl overflow-hidden animate-fade-in"
+                >
+                    <div class="p-8 bg-gradient-to-r from-[#47855A]/10 to-blue-50">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Consultation en cabinet</h2>
+                        <p class="text-gray-600">Choisissez directement votre créneau dans le calendrier</p>
+                    </div>
+                    <iframe 
+                        src="https://calendly.com/laubourgeois-osteo/consultation-osteopathique-chien-chat" 
+                        class="w-full h-[700px]"
+                        frameborder="0"
+                        scrolling="no"
+                    ></iframe>
+                </div>
             </div>
-
         </div>
     </div>
 </template>
 
 <script>
-import PricingToggle from './components/Toggle.vue';
-import ContactForm from './components/ContactForm.vue';
+import ContactForm from './components/ContactForm.vue'
 
 export default {
+    name: 'PriseRDV',
     components: {
-        PricingToggle,
-        ContactForm,
+        ContactForm
     },
     data() {
         return {
-            isDomicile: true,
-            isContactFormVisible: true, // Pour gérer l'affichage du formulaire
-            contactForm: {
-                name: '',
-                email: ''
-            },
-            appointmentForm: {
-                date: '',
-                time: ''
-            },
-            title: '', // Ajoutez une propriété pour stocker le titre
-        };
+            isDomicile: true
+        }
     },
-    async asyncData({ query }) {
-        return {
-            title: query.title || 'Titre par défaut', // Récupérez le titre de la requête
-        };
-    },
-
     methods: {
-        handleToggle(isCabinet) {
-            this.isDomicile = isCabinet ? false : true;
-        },
         setDomicile() {
-            this.isDomicile = true;
+            this.isDomicile = true
         },
         setCabinet() {
-            this.isDomicile = false;
+            this.isDomicile = false
         },
-        submitContactForm() {
-            console.log('Formulaire de contact soumis:', this.contactForm);
-            this.contactForm.name = '';
-            this.contactForm.email = '';
-        },
-        submitAppointmentForm() {
-            console.log('Formulaire de rendez-vous soumis:', this.appointmentForm);
-            this.appointmentForm.date = '';
-            this.appointmentForm.time = '';
-        },
-    },
-};
+        handleToggle(isCabinet) {
+            this.isDomicile = !isCabinet
+        }
+    }
+}
 </script>
 
 <style scoped>
-@media (max-width: 768px) {
-
-    /* Styles pour mobile */
-    .form-container {
-        width: 100%;
-        /* Prend toute la largeur sur mobile */
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-    
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    iframe {
+        height: 600px;
+    }
 }
 </style>
-
-<!-- <template>
-    <div class="mt-20">
-        <PricingToggle @toggle="handleToggle" />
-        <div class="flex justify-center p-6">
-            <table class="border border-black w-2/3">
-                <tr>
-                    <td class="border border-black w-1/2">
-                        <div class="form-container flex-1 border rounded-lg"
-                            :class="{ 'opacity-30 pointer-events-none': !isDomicile }">
-                            <ContactForm />
-                        </div>
-                    </td>
-                    <td class="border border-black w-1/2">
-                        <div class="form-container flex-1 border rounded-lg"
-                            :class="{ 'opacity-30 pointer-events-none': isDomicile }" style="overflow: hidden;">
-                            <iframe src="https://calendly.com/laubourgeois-osteo/60min" width="100%" height="865"
-                                frameborder="0" scrolling="no"></iframe>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</template>
-
-<script>
-import PricingToggle from './components/Toggle.vue';
-import ContactForm from './components/ContactForm.vue';
-
-export default {
-    components: {
-        PricingToggle,
-        ContactForm,
-    },
-    data() {
-        return {
-            isDomicile: true,
-            contactForm: {
-                name: '',
-                email: ''
-            },
-            appointmentForm: {
-                date: '',
-                time: ''
-            }
-        };
-    },
-    methods: {
-        handleToggle(isCabinet) {
-            this.isDomicile = isCabinet ? false : true;
-        },
-        setDomicile() {
-            this.isDomicile = true;
-        },
-        setCabinet() {
-            this.isDomicile = false;
-        },
-        submitContactForm() {
-            console.log('Formulaire de contact soumis:', this.contactForm);
-            this.contactForm.name = '';
-            this.contactForm.email = '';
-        },
-        submitAppointmentForm() {
-            console.log('Formulaire de rendez-vous soumis:', this.appointmentForm);
-            this.appointmentForm.date = '';
-            this.appointmentForm.time = '';
-        }
-    },
-};
-</script> -->

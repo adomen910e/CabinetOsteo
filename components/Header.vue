@@ -1,38 +1,78 @@
 <template>
-  <header class="bg-bleu text-blanc p-4 fixed top-0 left-0 w-full z-50">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-xl font-bold">Laurine Bourgeois</h1>
-      <nav class="hidden md:flex md:items-center md:justify-end space-x-4">
-        <ul class="flex space-x-4">
-          <li><NuxtLink to="/" class="hover:text-gray-400">L'acceuil</NuxtLink></li>
-          <li><NuxtLink to="/osteopathie" class="hover:text-gray-400">L'ostéopathie</NuxtLink></li>
-          <li><NuxtLink to="/chien" class="hover:text-gray-400">Le chien</NuxtLink></li>
-          <li><NuxtLink to="/chat" class="hover:text-gray-400">Le chat</NuxtLink></li>
-          <li><NuxtLink to="/cheval" class="hover:text-gray-400">Le cheval</NuxtLink></li>
-          <li><NuxtLink to="/qui" class="hover:text-gray-400">Qui suis-je ?</NuxtLink></li>
-          <li><NuxtLink to="/priseRdv" class="hover:text-gray-400">Prise de rendez-vous</NuxtLink></li>
-        </ul>
-      </nav>
-      <button @click="toggleMenu" class="md:hidden focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
-      </button>
+  <header class="bg-noir fixed top-0 left-0 w-full z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo + Nom -->
+        <NuxtLink to="/" class="flex items-center space-x-3 text-vert hover:text-vert_hover transition-colors duration-200">
+          <img src="/assets/images/logo.png" alt="Logo" class="h-16 w-24 " />
+          <h1 class="text-xl font-semibold">Laurine Bourgeois</h1>
+        </NuxtLink>
+
+        <!-- Navigation desktop -->
+        <nav class="hidden lg:flex items-center space-x-8">
+          <NuxtLink 
+            v-for="(item, index) in navigation" 
+            :key="index"
+            :to="item.path"
+            class="text-blanc hover:text-vert text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-vert after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+          >
+            {{ item.name }}
+          </NuxtLink>
+        </nav>
+
+        <!-- Bouton menu mobile -->
+        <button 
+          @click="toggleMenu" 
+          class="lg:hidden p-2 text-blanc hover:text-vert transition-colors duration-200"
+        >
+          <svg 
+            class="w-6 h-6" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              v-if="!isMenuOpen" 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+            <path 
+              v-else 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
-    <div v-if="isMenuOpen" class="absolute right-0 mt-2 bg-gray-800 text-white shadow-lg rounded-lg z-50 md:hidden">
-      <nav>
-        <ul class="flex flex-col space-y-2 p-4">
-          <li><NuxtLink to="/" class="hover:text-gray-400">L'acceuil</NuxtLink></li>
-          <li><NuxtLink to="/osteopathie" class="hover:text-gray-400">L'ostéopathie</NuxtLink></li>
-          <li><NuxtLink to="/chien" class="hover:text-gray-400">Le chien</NuxtLink></li>
-          <li><NuxtLink to="/chat" class="hover:text-gray-400">Le chat</NuxtLink></li>
-          <li><NuxtLink to="/cheval" class="hover:text-gray-400">Le cheval</NuxtLink></li>
-          <li><NuxtLink to="/qui" class="hover:text-gray-400">Qui suis-je ?</NuxtLink></li>
-          <li><NuxtLink to="/priseRdv" class="hover:text-gray-400">Prise de rendez-vous</NuxtLink></li>
-        </ul>
-      </nav>
+
+    <!-- Menu mobile -->
+    <div 
+      v-show="isMenuOpen" 
+      class="lg:hidden bg-noir border-t border-vert/10"
+    >
+      <div class="container mx-auto px-4 py-3">
+        <nav class="flex flex-col space-y-3">
+          <NuxtLink 
+            v-for="(item, index) in navigation" 
+            :key="index"
+            :to="item.path"
+            class="text-blanc hover:text-vert hover:bg-noir/50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+            @click="closeMenu"
+          >
+            {{ item.name }}
+          </NuxtLink>
+        </nav>
+      </div>
     </div>
   </header>
+
+  <!-- Spacer pour éviter que le contenu passe sous le header -->
+  <div class="h-16"></div>
 </template>
 
 <script>
@@ -40,20 +80,35 @@ export default {
   name: 'Header',
   data() {
     return {
-      isMenuOpen: false, // État du menu
-    };
+      isMenuOpen: false,
+      navigation: [
+        { name: 'Accueil', path: '/' },
+        { name: 'Chien', path: '/chien' },
+        { name: 'Chat', path: '/chat' },
+        { name: 'Cheval', path: '/cheval' },
+        { name: 'Qui suis-je ?', path: '/qui' },
+        { name: 'Prendre rendez-vous', path: '/priseRdv' }
+      ]
+    }
   },
   methods: {
     toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen; // Inverse l'état du menu
+      this.isMenuOpen = !this.isMenuOpen;
     },
+    closeMenu() {
+      this.isMenuOpen = false;
+    }
   },
-};
+  watch: {
+    '$route'() {
+      this.isMenuOpen = false;
+    }
+  }
+}
 </script>
 
 <style scoped>
-/* Ajoutez des styles personnalisés ici si nécessaire */
-nav {
-  transition: max-height 0.3s ease-in-out;
+.router-link-active {
+  @apply text-vert;
 }
 </style>
