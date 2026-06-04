@@ -26,6 +26,8 @@ export default {
         bleu: '#16a34a',
         bleu_hover: '#15803d',
         blanc: '#FAF9F6',
+        creme: '#F5F1E8',
+        creme_hover: '#EDE7DA',
         noir : '#2B2B2A',
         vert: '#A8D5BA',
         vert_hover: '#94BBA4',

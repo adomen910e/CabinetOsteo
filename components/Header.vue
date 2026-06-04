@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-noir fixed top-0 left-0 w-full z-50">
+  <header class="bg-creme shadow-sm fixed top-0 left-0 w-full z-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo + Nom -->
@@ -14,7 +14,7 @@
             v-for="(item, index) in navigation" 
             :key="index"
             :to="item.path"
-            class="text-blanc hover:text-vert text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-vert after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+            class="text-noir hover:text-vert text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-vert after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
           >
             {{ item.name }}
           </NuxtLink>
@@ -23,7 +23,7 @@
         <!-- Bouton menu mobile -->
         <button 
           @click="toggleMenu" 
-          class="lg:hidden p-2 text-blanc hover:text-vert transition-colors duration-200"
+          class="lg:hidden p-2 text-noir hover:text-vert transition-colors duration-200"
         >
           <svg 
             class="w-6 h-6" 
@@ -53,7 +53,7 @@
     <!-- Menu mobile -->
     <div 
       v-show="isMenuOpen" 
-      class="lg:hidden bg-noir border-t border-vert/10"
+      class="lg:hidden bg-creme border-t border-noir/10"
     >
       <div class="container mx-auto px-4 py-3">
         <nav class="flex flex-col space-y-3">
@@ -61,7 +61,7 @@
             v-for="(item, index) in navigation" 
             :key="index"
             :to="item.path"
-            class="text-blanc hover:text-vert hover:bg-noir/50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+            class="text-noir hover:text-vert hover:bg-vert/10 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
             @click="closeMenu"
           >
             {{ item.name }}

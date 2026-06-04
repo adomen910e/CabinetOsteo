@@ -3,23 +3,23 @@
         <!-- Hero Section -->
         <div class="relative mt-[-64px]">
             <section class="relative h-[calc(100vh-64px)] w-full">
-                <div 
-        class="absolute inset-0 bg-cover bg-center" 
-        :style="{ 
-            backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(' + backAcceuil + ')' 
+                <div
+        class="absolute inset-0 bg-cover bg-center"
+        :style="{
+            backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)), url(' + backAcceuil + ')'
         }"
     ></div>
 
                 <div class="relative h-full flex text-center">
                     <div class="absolute left-8 md:left-16 bottom-8 md:top-16 max-w-xl animate-fade-in">
-                        <div class="backdrop-blur-sm  p-8 rounded-xl border border-white/10 ">
-                            <h2 class="text-4l md:text-4xl font-light text-blanc/90 ">
+                        <div class="backdrop-blur-sm bg-creme/80 shadow-lg p-8 rounded-xl border border-noir/10 ">
+                            <h2 class="text-4l md:text-4xl font-light text-noir/80 ">
                                 Ostéopathe Animalier
                             </h2>
-                            <h1 class="text-xl md:text-3xl lg:text-4xl font-bold mb-2 text-blanc">
+                            <h1 class="text-xl md:text-3xl lg:text-4xl font-bold mb-2 text-noir">
                                 Laurine Bourgeois
                             </h1>
-                            <h2 class="text-xl md:text-2xl font-light mb-4 text-blanc/90 ">
+                            <h2 class="text-xl md:text-2xl font-light mb-4 text-noir/80 ">
                                 OA381
                             </h2>
                             <NuxtLink to="/priseRdv"

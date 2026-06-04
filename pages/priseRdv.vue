@@ -18,25 +18,25 @@
                     <div class="bg-white p-2 rounded-xl shadow-lg">
                         <div class="relative">
                             <div class="flex">
-                                <button 
-                                    @click="setDomicile"
-                                    class="flex-1 px-6 py-3 text-lg font-medium rounded-lg transition-colors relative z-10"
-                                    :class="isDomicile ? 'text-white' : 'text-gray-600'"
-                                >
-                                    À domicile
-                                </button>
-                                <button 
+                                <button
                                     @click="setCabinet"
                                     class="flex-1 px-6 py-3 text-lg font-medium rounded-lg transition-colors relative z-10"
                                     :class="!isDomicile ? 'text-white' : 'text-gray-600'"
                                 >
                                     En cabinet
                                 </button>
+                                <button
+                                    @click="setDomicile"
+                                    class="flex-1 px-6 py-3 text-lg font-medium rounded-lg transition-colors relative z-10"
+                                    :class="isDomicile ? 'text-white' : 'text-gray-600'"
+                                >
+                                    À domicile
+                                </button>
                             </div>
                             <!-- Sliding background -->
-                            <div 
+                            <div
                                 class="absolute inset-y-0 w-1/2 bg-[#47855A] rounded-lg transition-transform duration-300"
-                                :class="isDomicile ? 'left-0' : 'translate-x-full'"
+                                :class="isDomicile ? 'translate-x-full' : 'left-0'"
                             ></div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ export default {
     },
     data() {
         return {
-            isDomicile: true
+            isDomicile: false
         }
     },
     methods: {

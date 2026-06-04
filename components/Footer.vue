@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-noir text-blanc py-8">
+    <footer class="bg-creme text-noir border-t border-noir/10 py-8">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Section logo et info -->
@@ -9,7 +9,7 @@
                             class="h-16 w-24  mr-4" />
                         <div>
                             <h3 class="font-bold text-xl text-vert">Laurine Bourgeois</h3>
-                            <p class="text-blanc/80">Ostéopathe Animalier</p>
+                            <p class="text-noir/70">Ostéopathe Animalier</p>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 laubourgeois.osteo@gmail.com
                             </a>
                         </p>
-                        <p class="text-blanc/80">+33 7 70 30 99 41</p>
+                        <p class="text-noir/70">+33 7 70 30 99 41</p>
                     </address>
                 </div>
 
@@ -38,7 +38,7 @@
             </div>
 
             <!-- Réseaux sociaux -->
-            <div class="flex justify-center gap-6 mt-8 pt-8 border-t border-blanc/10">
+            <div class="flex justify-center gap-6 mt-8 pt-8 border-t border-noir/10">
                 <a href="https://www.instagram.com/laurinebourgeois_osteoa/profilecard/?igsh=MXV3Z3B4ZjRsNWF2bg=="
                     target="_blank" class="text-vert hover:text-vert_hover transition-colors">
                     <span class="flex items-center gap-2">
