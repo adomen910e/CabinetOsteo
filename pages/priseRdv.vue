@@ -68,12 +68,13 @@
                         <h2 class="text-2xl font-bold text-gray-800 mb-4">Consultation en cabinet</h2>
                         <p class="text-gray-600">Choisissez directement votre créneau dans le calendrier</p>
                     </div>
-                    <iframe 
-                        src="https://calendly.com/laubourgeois-osteo/consultation-osteopathique-chien-chat" 
-                        class="w-full h-[700px]"
-                        frameborder="0"
-                        scrolling="no"
-                    ></iframe>
+                    <!-- Widget Calendly officiel : se redimensionne à la hauteur exacte du calendrier (pas de scroll interne) -->
+                    <div
+                        ref="calendly"
+                        class="calendly-inline-widget w-full"
+                        data-url="https://calendly.com/laubourgeois-osteo/consultation-osteopathique-chien-chat?hide_gdpr_banner=1"
+                        style="min-width:320px;height:700px;overflow:hidden;"
+                    ></div>
                 </div>
             </div>
         </div>
@@ -93,7 +94,24 @@ export default {
             isDomicile: false
         }
     },
+    mounted() {
+        this.loadCalendly()
+        // Calendly envoie la hauteur réelle du calendrier : on ajuste le widget pile à cette taille.
+        window.addEventListener('message', this.handleCalendlyResize)
+    },
+    beforeUnmount() {
+        window.removeEventListener('message', this.handleCalendlyResize)
+    },
     methods: {
+        handleCalendlyResize(e) {
+            if (typeof e.origin !== 'string' || e.origin.indexOf('calendly.com') === -1) return
+            const data = e.data
+            if (!data || data.event !== 'calendly.page_height' || !data.payload) return
+            if (this.$refs.calendly) {
+                // On applique la hauteur exacte renvoyée par Calendly → plus aucun scroll interne.
+                this.$refs.calendly.style.height = data.payload.height
+            }
+        },
         setDomicile() {
             this.isDomicile = true
         },
@@ -102,6 +120,20 @@ export default {
         },
         handleToggle(isCabinet) {
             this.isDomicile = !isCabinet
+        },
+        loadCalendly() {
+            // Si le script est déjà chargé (navigation SPA), on ré-initialise le widget.
+            if (window.Calendly && typeof window.Calendly.initInlineWidgets === 'function') {
+                window.Calendly.initInlineWidgets()
+                return
+            }
+            if (document.querySelector('script[src*="assets.calendly.com/assets/external/widget.js"]')) {
+                return
+            }
+            const script = document.createElement('script')
+            script.src = 'https://assets.calendly.com/assets/external/widget.js'
+            script.async = true
+            document.body.appendChild(script)
         }
     }
 }
@@ -132,10 +164,11 @@ export default {
     animation: fade-in 0.4s ease-out forwards;
 }
 
-/* Responsive adjustments */
+/* Le widget Calendly gère lui-même sa hauteur (redimensionnement dynamique via widget.js).
+   On garde juste une hauteur minimale confortable sur mobile en attendant le chargement. */
 @media (max-width: 768px) {
-    iframe {
-        height: 600px;
+    .calendly-inline-widget {
+        min-height: 600px;
     }
 }
 </style>
